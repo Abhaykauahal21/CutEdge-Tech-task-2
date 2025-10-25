@@ -3,96 +3,334 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Registration Portal | Cutedge Academy</title>
+  <title>Global Pharmaceutical Partners</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --primary: #1a6bb3;
+      --primary-dark: #0d4d8c;
+      --secondary: #2ecc71;
+      --light: #f8f9fa;
+      --dark: #333;
+      --gray: #6c757d;
+      --border-radius: 8px;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      color: black;
+      padding: 25px 0 80px;
+      text-align: center;
+      background-color: white;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    /* Features Section */
+    .features {
+      background-color: white;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* ✅ 3 per row */
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+      color: black;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+
+    /* Products Section */
+    .products {
+      padding: 40px 0;
+      padding-top: 60px;
+      background-color: white;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: black;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 25px;
+    }
+
+    .product-card h3 {
+      color: black;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .product-card p {
+      color: var(--gray);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .product-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .product-link i {
+      margin-left: 5px;
+      transition: var(--transition);
+    }
+
+    .product-link:hover {
+      color: var(--primary-dark);
+    }
+
+    .product-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* View All Section */
+    .view-all {
+      padding: 60px 0;
+      text-align: center;
+      background-color: white;
+    }
+
+    .view-all-btn {
+      display: inline-flex;
+      align-items: center;
+     
+      color: var(--primary);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(26, 107, 179, 0.3);
+      border: 1px solid var(--primary);
+    }
+
+    .view-all-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(26, 107, 179, 0.4);
+    }
+
+    .view-all-btn i {
+      margin-left: 8px;
+    }
+
+  
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .features-grid,
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="container">
-    <header class="form-header">
-      <div class="logo">
-        <i class="fas fa-graduation-cap"></i>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Why Global Partners Trust Us</h1>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-award"></i></div>
+          <h3>Quality-First Manufacturing</h3>
+          <p>Our state-of-the-art facilities adhere to the highest international standards, ensuring every product meets rigorous quality benchmarks before export.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+          <h3>End-to-End Export Support</h3>
+          <p>From regulatory documentation to specialized packaging and logistics, we handle every aspect of the export process with precision and care.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
+          <h3>500+ Products Delivered Globally</h3>
+          <p>Our extensive product portfolio serves diverse healthcare needs across continents, backed by consistent quality and timely delivery.</p>
+        </div>
       </div>
-      <h1>Student Registration</h1>
-      <p class="tagline">Join our academic community of excellence</p>
-    </header>
+    </div>
+  </section>
 
-    <form id="registrationForm" action="#" method="POST">
-      <section class="form-section personal-info">
-        <h2><i class="fas fa-user"></i> Personal Information</h2>
-        
-        <div class="form-group">
-          <label for="fullname">Full Name <span class="required">*</span></label>
-          <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required />
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email Address <span class="required">*</span></label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number <span class="required">*</span></label>
-            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Gender <span class="required">*</span></label>
-          <div class="gender-group">
-            <div class="radio-item">
-              <input type="radio" id="male" name="gender" value="Male" required />
-              <label for="male">Male</label>
-            </div>
-            <div class="radio-item">
-              <input type="radio" id="female" name="gender" value="Female" />
-              <label for="female">Female</label>
-            </div>
-            <div class="radio-item">
-              <input type="radio" id="other" name="gender" value="Other" />
-              <label for="other">Other</label>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="dob">Date of Birth <span class="required">*</span></label>
-          <input type="date" id="dob" name="dob" required />
-        </div>
-      </section>
-
-      <section class="form-section academic-info">
-        <h2><i class="fas fa-book"></i> Academic Information</h2>
-        
-        <div class="form-group">
-          <label for="course">Desired Program <span class="required">*</span></label>
-          <select id="course" name="course" required>
-            <option value="">-- Select Program --</option>
-            <option value="btech">B.Tech (Computer Science)</option>
-            <option value="bca">BCA (Bachelor of Computer Applications)</option>
-            <option value="mba">MBA (Master of Business Administration)</option>
-            <option value="mca">MCA (Master of Computer Applications)</option>
-            <option value="bba">BBA (Bachelor of Business Administration)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="address">Residential Address <span class="required">*</span></label>
-          <textarea id="address" name="address" rows="3" placeholder="Enter your complete address" required></textarea>
-        </div>
-      </section>
-
-      <div class="form-actions">
-        <button type="reset" class="btn-secondary"><i class="fas fa-undo"></i> Reset</button>
-        <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Submit Application</button>
+  <!-- Products Section -->
+  <section class="products">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Product Categories</h2>
+        <p>We offer a comprehensive range of pharmaceutical products across multiple therapeutic categories to meet diverse healthcare needs globally.</p>
       </div>
-    </form>
-  </main>
 
-  <footer class="page-footer">
-    <p>&copy; 2023 Cutedge Academy. All rights reserved.</p>
-  </footer>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://plus.unsplash.com/premium_photo-1723921254681-1cd80686b44e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW5pYmlvdGljfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt="Antibiotics">
+          </div>
+          <div class="product-content">
+            <h3>Antibiotics</h3>
+            <p>Broad spectrum and targeted antibiotics in various formulations including tablets, capsules, and injectables.</p>
+            <a href="#" class="product-link">View Products <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1460672985063-6764ac8b9c74?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q2FyZGlvdmFzY3VsYXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt="Cardiovascular">
+          </div>
+          <div class="product-content">
+            <h3>Cardiovascular</h3>
+            <p>Comprehensive range of medications for hypertension, heart failure, and other cardiovascular conditions.</p>
+            <a href="#" class="product-link">View Products <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1685485276914-6cefc2417c05?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8QW50aS1EaWFiZXRpY3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt="Anti-Diabetic">
+          </div>
+          <div class="product-content">
+            <h3>Anti-Diabetic</h3>
+            <p>Oral hypoglycemics, insulins, and other diabetes management medications with proven efficacy.</p>
+            <a href="#" class="product-link">View Products <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://media.istockphoto.com/id/2240135010/photo/jar-of-spa-cream-in-the-hands-of-a-girl-skin-care-medical-and-dermatological-cosmetics-for.webp?a=1&b=1&s=612x612&w=0&k=20&c=UqxR5q_bRC-4brybztNNMgxYyfAbNwEzQLOjkMe1WMA=" alt="Dermatological">
+          </div>
+          <div class="product-content">
+            <h3>Dermatological</h3>
+            <p>Topical preparations, creams, ointments, and specialized formulations for various skin conditions.</p>
+            <a href="#" class="product-link">View Products <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- View All -->
+  <section class="view-all">
+    <div class="container">
+      <a href="#" class="view-all-btn">View All Categories <i class="fas fa-chevron-right"></i></a>
+    </div>
+  </section>
+
+  
 </body>
 </html>
